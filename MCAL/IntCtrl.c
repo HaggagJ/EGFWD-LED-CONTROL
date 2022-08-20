@@ -36,7 +36,7 @@ void IntCtrl_Init(void)
         #endif
 
     uint8 totalPriority;
-    volatile uint32* regAddr = 0x00000000;
+    uint32* regAddr = 0x00000000;
 
     // Adjust the group to subgroup ratio in APINT , write the VECTKEY value first in the reg
     APINT = (VECTKEY << 16)|(IntCtrl_Group_to_SubGroup_cfg << 8);
@@ -95,17 +95,17 @@ void IntCtrl_Init(void)
 
         //enable/disable interrupts if not system exception
         if(IntCtrl_Configurations[i].e==ENABLE){
-         regAddr = NVIC_EN0_REG;
+					regAddr = (uint32*)& NVIC_EN0_REG;
         }
         else{
-         regAddr = (uint32*)NVIC_DIS0_REG;
+         regAddr = (uint32*) & NVIC_DIS0_REG;
         }
          regAddr+=((uint32)(IntCtrl_Configurations[i].intNum / 32)); //increase addres of pointer
          (*regAddr)|=(1<<(IntCtrl_Configurations[i].intNum % 32));
 
         //insert priority of the interrupt only if ENABLE option is chosen
         if(IntCtrl_Configurations[i].e==ENABLE){
-        *regAddr = NVIC_PRI0_REG;
+        regAddr =(uint32*) & NVIC_PRI0_REG;
         }
         else{
             continue;
