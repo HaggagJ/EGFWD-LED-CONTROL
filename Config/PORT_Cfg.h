@@ -3,7 +3,7 @@
 
 
 /* Number of the configured Port Channels */
-#define PORT_CONFIGURED_CHANNLES              (43U)
+#define PORT_CONFIGURED_CHANNLES              (2U)
 
 /* Channel Index in the array of structures in Port_lcfg.c */
 /* Assuming all pins have been configured and PF1 & PF4 were specially configured for the LED and BUTTON*/

@@ -21,31 +21,29 @@
 * Description: Function to read level of a port
 ************************************************************************************/
 Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId){
-	volatile uint32 * Port_Ptr = 0x00000000;
-	Dio_LevelType level=0;
+
+	Dio_PortLevelType level=0;
 	switch (PortId)
 	{
 	case Dio_PORTA_PORT_NUM:
-		Port_Ptr = &GPIO_PORTA_DATA_REG; 		
+		level = GPIO_PORTA_DATA_REG; 		
 		break;
 	case Dio_PORTB_PORT_NUM:
-		Port_Ptr = &GPIO_PORTB_DATA_REG; 
+		level = GPIO_PORTB_DATA_REG; 
 		break;
 	case Dio_PORTC_PORT_NUM:
-		Port_Ptr = &GPIO_PORTC_DATA_REG;
+		level = GPIO_PORTC_DATA_REG;
 		break;
 	case Dio_PORTD_PORT_NUM:
-		Port_Ptr = &GPIO_PORTD_DATA_REG;
+		level = GPIO_PORTD_DATA_REG;
 		break;
 	case Dio_PORTE_PORT_NUM:
-		Port_Ptr = &GPIO_PORTE_DATA_REG;
+		level = GPIO_PORTE_DATA_REG;
 		break;
 	case Dio_PORTF_PORT_NUM:
-		Port_Ptr = &GPIO_PORTF_DATA_REG;
+		level = GPIO_PORTF_DATA_REG;
 		break;    
 	}
-
-	level=*Port_Ptr;
 	return level;
 
 }
@@ -60,30 +58,27 @@ Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId){
 * Description: Function to write level of a port
 ************************************************************************************/
 void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level){
-	volatile uint32 * Port_Ptr = 0x00000000;
 	switch (PortId)
 	{
 	case Dio_PORTA_PORT_NUM:
-		Port_Ptr = &GPIO_PORTA_DATA_REG; 		
+		GPIO_PORTA_DATA_REG=Level; 		
 		break;
 	case Dio_PORTB_PORT_NUM:
-		Port_Ptr = &GPIO_PORTB_DATA_REG; 
+		GPIO_PORTB_DATA_REG=Level; 
 		break;
 	case Dio_PORTC_PORT_NUM:
-		Port_Ptr = &GPIO_PORTC_DATA_REG;
+		GPIO_PORTC_DATA_REG=Level; 
 		break;
 	case Dio_PORTD_PORT_NUM:
-		Port_Ptr = &GPIO_PORTD_DATA_REG;
+		GPIO_PORTD_DATA_REG=Level; 
 		break;
 	case Dio_PORTE_PORT_NUM:
-		Port_Ptr = &GPIO_PORTE_DATA_REG;
+		GPIO_PORTE_DATA_REG=Level; 
 		break;
 	case Dio_PORTF_PORT_NUM:
-		Port_Ptr = &GPIO_PORTF_DATA_REG;
+		GPIO_PORTF_DATA_REG=Level; 
 		break;    
 	}
-
-	*Port_Ptr = Level;
 }
 /************************************************************************************
 * Service Name: Dio_WriteChannel
@@ -122,7 +117,7 @@ void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType Level)
 			Port_Ptr = &GPIO_PORTF_DATA_REG;
 		}
 		else{
-			#warning ("invalid pin number")
+			//#warning ("invalid pin number")
 		}
 
 		if(Level == STD_HIGH)
@@ -178,7 +173,7 @@ Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId)
 			Port_Ptr = &GPIO_PORTF_DATA_REG;
 		}
 		else{
-			#warning ("invalid pin number")
+			//#warning ("invalid pin number")
 		}
 		
 		/* Read the required channel */
@@ -231,7 +226,7 @@ Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId)
 			Port_Ptr = &GPIO_PORTF_DATA_REG;
 		}
 		else{
-			#warning ("invalid pin number")
+			//#warning ("invalid pin number")
 		}
 
 		/* Read the required channel and write the required level */
