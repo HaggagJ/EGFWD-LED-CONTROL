@@ -38,4 +38,7 @@ typedef double                float64;
 #define E_OK            ((Std_ReturnType)0x00U)      /* Function Return OK */
 #define E_NOT_OK        ((Std_ReturnType)0x01U)      /* Function Return NOT OK */
 
+#define false 0
+#define true 1
+
 #endif /* PLATFORM_TYPES_H */
