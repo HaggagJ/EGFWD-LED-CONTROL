@@ -1,32 +1,36 @@
 /**********************************************************************************************************************
  *  FILE DESCRIPTION
  *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  IntCtrl_lcfg.c
+/**        \file  Systick.h
  *        \brief  
  *
  *      \details  
  *
  *
  *********************************************************************************************************************/
-#ifndef INTCTRL_LCFG_C
-#define INTCTRL_LCFG_C
-
+#ifndef SYSTICK_H
+#define SYSTICK_H
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
-#include "IntCtrl.h"
+#include "std_types.h"
 
 /**********************************************************************************************************************
- *  LOCAL DATA 
+*  MACROS CONSTANT\FUNCTION
+*********************************************************************************************************************/
+#define SYSTICK_CTRL_REG          (*((volatile unsigned long *)0xE000E010))
+#define SYSTICK_RELOAD_REG        (*((volatile unsigned long *)0xE000E014))
+#define SYSTICK_CURRENT_REG       (*((volatile unsigned long *)0xE000E018))
+/**********************************************************************************************************************
+ *  FUNCTIONS PROTOTYPES
  *********************************************************************************************************************/
-const IntCtrl_Cfg IntCtrl_Configurations[INTCTRL_NUM_OF_ENABLED_INT]={
-    /* InterruptNum, Enable or Disable, PriorityGroup, PrioritySubGroup */
-   {SYSTICK, NONE,  0, 0}
-};
-//This is used to adjust "group and subgroup" number of bits in APINT register 
-const uint8 IntCtrl_Group_to_SubGroup_cfg =  NVIC_PRIORITY_GROUP_8_SUBGROUP_1;
+void Systick_Enable(void);
+
+void Systick_SetPeriod(uint32 seconds);
+
+void Systick_Off(void);
 
 /**********************************************************************************************************************
- *  END OF FILE: IntCtrl_lcfg.c
+ *  END OF FILE: IntCtrl.h
  *********************************************************************************************************************/
-#endif
+#endif 

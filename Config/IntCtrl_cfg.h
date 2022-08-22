@@ -15,7 +15,7 @@
  *  CONFIGURATION ATTRIBUTES
  *********************************************************************************************************************/
 //number of configured interrupts
-#define INTCTRL_NUM_OF_ENABLED_INT  (3U)
+#define INTCTRL_NUM_OF_ENABLED_INT  (1U)
 //enable I bit
 #define INTCTRL_DISABLE_INTERRUPTS (0U)
 
