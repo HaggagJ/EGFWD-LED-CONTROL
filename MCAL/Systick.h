@@ -26,7 +26,7 @@
  *********************************************************************************************************************/
 void Systick_Enable(void);
 
-void Systick_SetPeriod(uint32 seconds);
+void Systick_SetPeriod(uint32 milliSeconds);
 
 void Systick_Off(void);
 
